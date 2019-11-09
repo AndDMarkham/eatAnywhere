@@ -8,15 +8,15 @@ import Profile from './Profile';
 export default class App extends React.Component {
     render(){
         return (
-           <div className="homepage">
+           <div className="row">
                 {/* <div className="login">
                     <Login/>
                 </div> */}
-                <div className="profile">
+                <div className="profile col-sm-12 col-md-4">
                     <Profile />
                 </div>
                 
-                <div>
+                <div className=" col-sm-12 col-md-8">
                     <MapContainer/>
                 </div>
             </div>
