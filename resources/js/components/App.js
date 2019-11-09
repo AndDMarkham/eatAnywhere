@@ -4,6 +4,7 @@ import MapContainer from './MapContainer';
 import Login from './Login';
 import './index.scss';
 import Profile from './Profile';
+import RestaurantCard from './RestaurantCard';
 
 export default class App extends React.Component {
     render(){
@@ -16,8 +17,9 @@ export default class App extends React.Component {
                     <Profile />
                 </div>
                 
-                <div className=" col-sm-12 col-md-8">
-                    <MapContainer/>
+                <div className="rightSide col-sm-12 col-md-8">
+                    {/* <MapContainer/> */}
+                    <RestaurantCard/>
                 </div>
             </div>
         )
