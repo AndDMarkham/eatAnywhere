@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import DishCardCarousel from './DishCardCarousel';
+import DietCardCarousel from './DietCardCarousel';
 
 import './index.scss';
 
@@ -7,8 +7,8 @@ export default class Profile extends Component {
     render(){
         return (
            
-           <div>
-               <div>
+           <div className="profile">
+               <div >
                    <div className="userInfo">
                        <div className="picture">your pic</div>
                        <div>
@@ -25,7 +25,7 @@ export default class Profile extends Component {
                <h3>Dishes recommended for you!</h3>
                <div className="row">
                    <div className="card col-lg-12">
-                       <DishCardCarousel/>
+                       <DietCardCarousel/>
                        
                        
                    </div>
