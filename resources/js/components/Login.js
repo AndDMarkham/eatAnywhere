@@ -63,7 +63,7 @@ export default class LoginForm extends React.Component {
                         /><br />
                         <input type="submit" value="Log in" />
                     </form>
-                    <a href="">Register Here</a>
+                    <a href="http://www.eatanywhere.test:8080/register">Register Here</a>
                 </div>
             </>
         )
