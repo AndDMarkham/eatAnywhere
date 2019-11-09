@@ -64940,8 +64940,8 @@ var googleKey = 'AIzaSyCdWaaJdA2vNPKHCJlErt7c5PKktVn2ro8';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/GarciaZapiain/web/bootcamp/eatAnywhere/laravel-master/eatAnywhere/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/GarciaZapiain/web/bootcamp/eatAnywhere/laravel-master/eatAnywhere/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/user/web/bootcamp/finalProject/eatAnywhere/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/user/web/bootcamp/finalProject/eatAnywhere/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
