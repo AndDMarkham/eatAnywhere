@@ -1,21 +1,13 @@
 * {
     box-sizing: border-box;
 }
-.homepage{
-    display: flex;
-    flex-direction: row;
-}
 
 .login{
     display: flex;
     flex-direction: column;
-    width: 20vw;
+    
     align-items: center;
     justify-content: center;
-}
-
-.profile{
-    width: 35vw;
 }
 
 .picture{
@@ -35,16 +27,19 @@
     padding-left: 5rem;
 }
 
-.recommendedCard{
-    display: flex;
-    flex-direction: row;
+// .recommendedCard{
+//     display: flex;
+//     flex-direction: row;
     
-}
+// }
 
 .cardBig{
-    width: 9rem;
+    width: 15rem;
     text-align: center;
     border: solid 0.1rem black;
+    padding: 1rem;
+    margin: 1rem;
+    
     
     h5{
         margin: 0rem;
@@ -53,24 +48,32 @@
         margin: 0rem;
     }
 }
-// .reviewCard{
-//     width: 8rem;
-//     text-align: center;
-//     //border: solid 0.1rem grey;
+.reviewCard{
     
-//     .dishImg{
-//     width: 6rem;
-//     height: 5rem;
-//     }
+    
+    //border: solid 0.1rem grey;
+    
+    .dishImg{
+    width: 100%;
+    
+    }
 
-// }
+    p{
+        font-size: 1rem;
+    }
+
+}
 .slick-dots{
     bottom: 0;
 }
 
 .slick-prev{
-    left: 100px;
+    left: 25px;
     z-index: 1000;
 }
 
+.slick-next{
+    left: 150px;
+    z-index: 1000;
+}
 

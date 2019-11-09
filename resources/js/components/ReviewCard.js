@@ -23,7 +23,7 @@ export default class ReviewCard extends Component {
                <ReactStars
             count={5}
             onChange={ratingChanged}
-            size={16}
+            size={10}
             color2={'#ffd700'} />
                <p>This meal was really awesome</p>
                 {/* <div class="card" style="width: 18rem;">

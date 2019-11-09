@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from './Card';
+import DishCardCarousel from './DishCardCarousel';
 
 import './index.scss';
 
@@ -23,10 +23,12 @@ export default class Profile extends Component {
                </div>
                <hr/>
                <h3>Dishes recommended for you!</h3>
-               <div className="recommendedCard">
-                   <Card/>
-                   <Card/>
-                   <Card/>
+               <div className="row">
+                   <div className="card col-lg-12">
+                       <DishCardCarousel/>
+                       
+                       
+                   </div>
                </div>
            </div>
         )
