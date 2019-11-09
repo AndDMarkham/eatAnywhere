@@ -17,11 +17,11 @@ class CreateRestaurantsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address')->nullable();
-            $table->float('longitude');
             $table->float('latitude');
+            $table->float('longitude');
             $table->string('phone');
             $table->string('website_url');
-            $table->string('image_id');
+            $table->string('image_id')->nullable();
             $table->timestamps();
 
             $table->unique(['name', 'longitude', 'latitude']);
