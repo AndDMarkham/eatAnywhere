@@ -64445,21 +64445,198 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/MapContainer.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/MapContainer.js ***!
-  \*************************************************/
-/*! exports provided: MapContainer, default */
+/***/ "./resources/js/components/Map.js":
+/*!****************************************!*\
+  !*** ./resources/js/components/Map.js ***!
+  \****************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapContainer", function() { return MapContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CurrentLocation; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var mapStyles = {
+  map: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%'
+  }
+};
+
+var CurrentLocation =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CurrentLocation, _React$Component);
+
+  function CurrentLocation(props) {
+    var _this;
+
+    _classCallCheck(this, CurrentLocation);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CurrentLocation).call(this, props));
+    var _this$props$initialCe = _this.props.initialCenter,
+        lat = _this$props$initialCe.lat,
+        lng = _this$props$initialCe.lng;
+    _this.state = {
+      currentLocation: {
+        lat: lat,
+        lng: lng
+      }
+    };
+    return _this;
+  }
+
+  _createClass(CurrentLocation, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevProps.google !== this.props.google) {
+        this.loadMap();
+      }
+
+      if (prevState.currentLocation !== this.state.currentLocation) {
+        this.recenterMap();
+      }
+    }
+  }, {
+    key: "recenterMap",
+    value: function recenterMap() {
+      var map = this.map;
+      var current = this.state.currentLocation;
+      var google = this.props.google;
+      var maps = google.maps;
+
+      if (map) {
+        var center = new maps.LatLng(current.lat, current.lng);
+        map.panTo(center);
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      if (this.props.centerAroundCurrentLocation) {
+        if (navigator && navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function (pos) {
+            var coords = pos.coords;
+
+            _this2.setState({
+              currentLocation: {
+                lat: coords.latitude,
+                lng: coords.longitude
+              }
+            });
+          });
+        }
+      }
+
+      this.loadMap();
+    }
+  }, {
+    key: "loadMap",
+    value: function loadMap() {
+      if (this.props && this.props.google) {
+        // checks if google is available
+        var google = this.props.google;
+        var maps = google.maps;
+        var mapRef = this.refs.map; // reference to the actual DOM element
+
+        var node = react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.findDOMNode(mapRef);
+        var zoom = this.props.zoom;
+        var _this$state$currentLo = this.state.currentLocation,
+            lat = _this$state$currentLo.lat,
+            lng = _this$state$currentLo.lng;
+        var center = new maps.LatLng(lat, lng);
+        var mapConfig = Object.assign({}, {
+          center: center,
+          zoom: zoom
+        }); // maps.Map() is constructor that instantiates the map
+
+        this.map = new maps.Map(node, mapConfig);
+      }
+    }
+  }, {
+    key: "renderChildren",
+    value: function renderChildren() {
+      var _this3 = this;
+
+      var children = this.props.children;
+      if (!children) return;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.map(children, function (c) {
+        if (!c) return;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(c, {
+          map: _this3.map,
+          google: _this3.props.google,
+          mapCenter: _this3.state.currentLocation
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var style = Object.assign({}, mapStyles.map);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: style,
+        ref: "map"
+      }, "Loading map..."), this.renderChildren());
+    }
+  }]);
+
+  return CurrentLocation;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+CurrentLocation.defaultProps = {
+  zoom: 14,
+  initialCenter: {
+    lat: 50.0755,
+    lng: 14.4378
+  },
+  centerAroundCurrentLocation: false,
+  visible: true
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/MapContainer.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/MapContainer.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var google_maps_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! google-maps-react */ "./node_modules/google-maps-react/dist/index.js");
 /* harmony import */ var google_maps_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(google_maps_react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _key_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../key.js */ "./resources/key.js");
+/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Map */ "./resources/js/components/Map.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64481,10 +64658,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStyles = {
   width: '100%',
   height: '100%'
 };
+
 var MapContainer =
 /*#__PURE__*/
 function (_Component) {
@@ -64498,18 +64677,15 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MapContainer).call(this, props));
     _this.state = {
       showingInfoWindow: false,
-      //Hides or the shows the infoWindow
       activeMarker: {},
-      //Shows the active marker upon click
-      selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
-
+      selectedPlace: {}
     };
     return _this;
   }
 
   _createClass(MapContainer, [{
     key: "onMarkerClick",
-    value: function onMarkerClick(props, marker) {
+    value: function onMarkerClick(props, marker, e) {
       this.setState({
         selectedPlace: props,
         activeMarker: marker,
@@ -64529,20 +64705,12 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["Map"], {
-        google: this.props.google,
-        zoom: 14,
-        style: mapStyles,
-        initialCenter: {
-          lat: 50.0755,
-          lng: 14.4378
-        }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Map__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        centerAroundCurrentLocation: true,
+        google: this.props.google
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["Marker"], {
         onClick: this.onMarkerClick,
-        position: {
-          lat: 50.083,
-          lng: 14.45
-        }
+        name: 'current location'
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["InfoWindow"], {
         marker: this.state.activeMarker,
         visible: this.state.showingInfoWindow,
@@ -64553,6 +64721,7 @@ function (_Component) {
 
   return MapContainer;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(google_maps_react__WEBPACK_IMPORTED_MODULE_1__["GoogleApiWrapper"])({
   apiKey: _key_js__WEBPACK_IMPORTED_MODULE_2__["googleKey"]
 })(MapContainer));

@@ -1,7 +1,7 @@
 import React,  {Component} from 'react';
 import { GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { googleKey } from '../../key.js';
-import CurrentLocation from './Map.jsx'
+import CurrentLocation from './Map';
 const mapStyles = {
     width: '100%',
     height: '100%'
@@ -20,19 +20,19 @@ const mapStyles = {
         };
       
 
-    onMarkerClick = (props, marker, e) =>
+    onMarkerClick (props, marker, e){
       this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
+    }
+    onClose (props){
+        if (this.state.showingInfoWindow) {
+        this.setState({
+            showingInfoWindow: false,
+            activeMarker: null
+        });
     }
   };
   
