@@ -12,7 +12,7 @@ export default class Card extends Component {
            <div className="cardBig">
                <h5>Wings</h5>
                <p>diets: keto</p>
-               <a href="">restaurant link</a>
+               <a href="RestaurantCard">restaurant link</a>
                <p>made of: chicken, sauce</p>
                <CardCarousel/>
            </div>
