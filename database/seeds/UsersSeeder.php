@@ -13,6 +13,17 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        $diets_rand = function() {
+            $diets = [];
+            $length = rand(1, 3);
+
+            for ($i = 0; $i < $length; $i++) {
+                $diets[] = rand(1, 20);
+            }
+
+            return $diets;
+        };
+
         $passwords = [
             '12345678',
             '87654321',
@@ -30,16 +41,19 @@ class UsersSeeder extends Seeder
         User::truncate();
         
         for ($i = 0; $i < count($passwords); $i++) {
-            $restaurant = new User;
+            $user = new User;
+            $diets = $diets_rand();
 
-            $restaurant->insert([
-                'first_name' => $faker->firstName(),
-                'last_name' => $faker->lastName(),
-                'user_name' => $faker->userName(),
-                'date_of_birth' => $faker->date(),
-                'email' => $faker->email(),
-                'password' => Hash::make($passwords[$i])
-            ]);
+            $user->first_name = $faker->firstName();
+            $user->last_name = $faker->lastName();
+            $user->user_name = $faker->userName();
+            $user->date_of_birth = $faker->date();
+            $user->email = $faker->email();
+            $user->password = Hash::make($passwords[$i]);
+
+            $user->save();
+
+            $user->diets()->attach($diets);
         }
     }
 }
