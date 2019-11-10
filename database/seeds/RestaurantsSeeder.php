@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Restaurant;
 
-class RestaurantSeeder extends Seeder
+class RestaurantsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

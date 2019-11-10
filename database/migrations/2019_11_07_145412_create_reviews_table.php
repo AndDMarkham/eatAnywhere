@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('text')->nullable();
             $table->smallInteger('rating');
-            $table->unsignedBigInteger('image_id');
+            $table->unsignedBigInteger('image_id')->nullable();
             $table->timestamps();
 
             $table->unique(['dish_id', 'user_id']);

@@ -12,6 +12,8 @@ class DietsSeeder extends Seeder
      */
     public function run()
     {
+        Diet::truncate();
+        
         Diet::insert([
             ['name' => 'vegan'],
             ['name' => 'vegetarian'],
