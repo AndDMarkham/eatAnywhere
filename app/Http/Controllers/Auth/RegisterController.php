@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Model;
 
 class RegisterController extends Controller
 {
@@ -49,7 +50,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'user_name'=>['required','string','max:255','unique:users'],
             'date_of_birth'=>['required','date','max:255'],
@@ -65,12 +67,38 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        dd($data);
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'user_name' => $data['user_name'],
             'date_of_birth' => $data['date_of_birth'],
             'password' => Hash::make($data['password']),
         ]);
+       $user -> diets()->attach($data['diet']);
+    //    $user -> diets()->attach($data['vegetarian']);
+    //    $user -> diets()->attach($data['pescetarian']);
+    //    $user -> diets()->attach($data['keto']);
+    //    $user -> diets()->attach($data['halal']);
+    //    $user -> diets()->attach($data['kosher']);
+    //    $user -> diets()->attach($data['gluten']);
+    //    $user -> diets()->attach($data['milk']);
+    //    $user -> diets()->attach($data['soy']);
+    //    $user -> diets()->attach($data['eggs']);
+    //    $user -> diets()->attach($data['peanuts']);
+    //    $user -> diets()->attach($data['tree_nuts']);
+    //    $user -> diets()->attach($data['fish']);
+    //    $user -> diets()->attach($data['molluscs']);
+    //    $user -> diets()->attach($data['crustaceans']);
+    //    $user -> diets()->attach($data['mustard']);
+    //    $user -> diets()->attach($data['sesame']);
+    //    $user -> diets()->attach($data['celery']);
+    //    $user -> diets()->attach($data['lupin']);
+    //    $user -> diets()->attach($data['sulphites']);
+       return $user;
+        
     }
 }
+
+
