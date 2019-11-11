@@ -1,0 +1,10 @@
+When migrating 'fresh':
+
+1. run -> php artisan migrate:fresh
+2. run -> php artisan db:seed --class=DietsSeeder
+3. run -> php artisan db:seed --class=ImagesSeeder
+4. run -> php artisan db:seed --class=RestaurantsSeeder
+5. run -> php artisan db:seed --class=UsersSeeder
+6. run -> php artisan db:seed --class=DishesSeeder
+7. run -> php artisan db:seed --class=ReviewsSeeder
+

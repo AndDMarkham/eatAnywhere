@@ -30,6 +30,7 @@ class ReviewsSeeder extends Seeder
                 $review->user_id = $user_ids[$i];
                 $review->text = $faker->text($maxNbChars = 100);
                 $review->rating = rand(1, 5);
+                $review->image_id = rand(1, 24);
                 $review->save();
             }
         }
