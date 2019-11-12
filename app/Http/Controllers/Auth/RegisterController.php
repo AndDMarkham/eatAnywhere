@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Model;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -67,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+        
         $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -77,26 +78,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
        $user -> diets()->attach($data['diet']);
-    //    $user -> diets()->attach($data['vegetarian']);
-    //    $user -> diets()->attach($data['pescetarian']);
-    //    $user -> diets()->attach($data['keto']);
-    //    $user -> diets()->attach($data['halal']);
-    //    $user -> diets()->attach($data['kosher']);
-    //    $user -> diets()->attach($data['gluten']);
-    //    $user -> diets()->attach($data['milk']);
-    //    $user -> diets()->attach($data['soy']);
-    //    $user -> diets()->attach($data['eggs']);
-    //    $user -> diets()->attach($data['peanuts']);
-    //    $user -> diets()->attach($data['tree_nuts']);
-    //    $user -> diets()->attach($data['fish']);
-    //    $user -> diets()->attach($data['molluscs']);
-    //    $user -> diets()->attach($data['crustaceans']);
-    //    $user -> diets()->attach($data['mustard']);
-    //    $user -> diets()->attach($data['sesame']);
-    //    $user -> diets()->attach($data['celery']);
-    //    $user -> diets()->attach($data['lupin']);
-    //    $user -> diets()->attach($data['sulphites']);
        return $user;
+
         
     }
 }

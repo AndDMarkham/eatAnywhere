@@ -148,7 +148,7 @@
             <input class="form-control" type="password" name="password_confirmation" value="">
         </div>
  
-        <button type="submit" class="btn btn-primary">Sign up</button>
+        <button action="{{ route('welcome') }}" type="submit" class="btn btn-primary">Sign up</button>
  
     </form>
  
