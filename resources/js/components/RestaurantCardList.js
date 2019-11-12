@@ -11,14 +11,14 @@ export default class RestaurantCardList extends Component {
         this.state = {
             loading: true,
             loaded: false,
-            data: []
+            data: { current_page: 1, data: [] }
             
         }
     }
 
     componentDidMount() {
         const url =
-			'https://nemadywgu6.execute-api.us-west-2.amazonaws.com/prod/'
+			'http://www.eatanywhere.test:8080/api/restaurants'
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
@@ -42,12 +42,12 @@ export default class RestaurantCardList extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                             {
-                                    this.state.data.map(restaurant => (
+                                    this.state.data.data.map(restaurant => (
                                     <div className="card">
                                         <div className="card-header row">
                                             <p className="col-sm-12 col-md-3">{ restaurant.name } </p>
                                             <p className="col-sm-12 col-md-3">{ restaurant.address } </p>
-                                            <a className="col-sm-12 col-md-3" href="{ restaurant.url } " target="_blank">{ restaurant.url } </a>
+                                            <a className="col-sm-12 col-md-3" href="{ restaurant.url } " target="_blank">{ restaurant.website_url } </a>
                                         </div>
                                         <div className="card-body">Check the dishes we have!
                                             <DishCardCarousel/>
@@ -80,19 +80,3 @@ export default class RestaurantCardList extends Component {
 }
 
 
-//   restaurants : [
-        //     {
-        //       name: 'U Bansethu',
-        //       address: '123 prague 3',
-        //       opening: '11-24 daily',
-        //       url: 'https://www.ubansethu.cz/en/'
-        //     },
-        //     { 
-        //       name: 'BeerGeek',
-        //       address: '456 Prague 2',
-        //       opening: '16-1 daily',
-        //       url: 'https://beergeek.cz/en/'
-              
-        //     },
-        //   ]
-        // }

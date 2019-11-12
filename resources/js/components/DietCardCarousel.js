@@ -4,6 +4,8 @@ import Card from './Card';
 import "react-multi-carousel/lib/styles.css";
  
 export default class DietCardCarousel extends Component {
+    
+    
     render() {
         const responsive = {
         desktop: {

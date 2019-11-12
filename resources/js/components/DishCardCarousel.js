@@ -4,6 +4,36 @@ import Card from './Card';
 import "react-multi-carousel/lib/styles.css";
  
 export default class DishCardCarousel extends Component {
+    // constructor(props) {
+    //     super(props);
+    
+    //     this.state = {
+    //         loading: true,
+    //         loaded: false,
+    //         data: { current_page: 1, data: [] }
+            
+    //     }
+    // }
+
+    // componentDidMount() {
+    //     const url =
+	// 		'http://www.eatanywhere.test:8080/api/restaurants'
+	// 	fetch(url)
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			this.setState({
+    //                 loading:false,
+    //                 loaded: true,
+    //                 data: data
+    //             })
+                
+	// 		})
+            
+    //     }
+    
+    
+    
+    
     render() {
         const responsive = {
         desktop: {
@@ -51,34 +81,3 @@ export default class DishCardCarousel extends Component {
     </Carousel>
 
     )}};
-// import Slider from "react-slick";
-// import Card from './Card';
-
-// export default class DishCardCarousel extends Component {
-//   render() {
-//     const settings = {
-//       dots: true,
-//       infinite: true,
-//       speed: 500,
-//       slidesToShow: 1,
-//       slidesToScroll: 1
-//     };
-//     return (
-//       <div>
-        
-//         <Slider {...settings}>
-//           <div>
-//             <Card/>
-//           </div>
-//           <div>
-//             <Card/>
-//           </div>
-//           <div>
-//             <Card/>
-//           </div>
-          
-//         </Slider>
-//       </div>
-//     );
-//   }
-// }
