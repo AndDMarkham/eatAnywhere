@@ -1,21 +1,30 @@
-import React, {Component} from 'react';
-import CardCarousel from './CardCarousel';
-import ReviewCard from './ReviewCard';
+// import React, {Component} from 'react';
+// import CardCarousel from './CardCarousel';
+// import ReviewCard from './ReviewCard';
 
 
-import './index.scss';
+// import './index.scss';
 
-export default class Card extends Component {
-    render(){
-        return (
+// export default class Card extends Component {
+    
+    
+//     render(){
+//         return (
            
-           <div className="cardBig">
-               <h5>Wings</h5>
-               <p>diets: keto</p>
-               <a href="RestaurantCard">restaurant link</a>
-               <p>made of: chicken, sauce</p>
-               <CardCarousel/>
-           </div>
-        )
-    }
-}
+//            <>
+//                {
+//                 this.state.data.map(dish => (
+//                 <div className="cardBig">
+//                     <h5>{ dish.name }</h5>
+//                     <p>diets: keto</p>
+//                     <a href="{ dish.restaurant_id }">restaurant link</a>
+//                     <p>{ dish.description }</p>
+//                     <CardCarousel/>
+//                 </div>
+//                 ))
+//                }
+//             </>  
+           
+//         )
+//     }
+// }

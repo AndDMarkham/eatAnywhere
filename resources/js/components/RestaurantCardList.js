@@ -11,7 +11,7 @@ export default class RestaurantCardList extends Component {
         this.state = {
             loading: true,
             loaded: false,
-            data: { current_page: 1, data: [] }
+            data: [] 
             
         }
     }
@@ -35,14 +35,14 @@ export default class RestaurantCardList extends Component {
       
     render() {
         
-        
+        console.log(this.state.data);
         return (
         
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                             {
-                                    this.state.data.data.map(restaurant => (
+                                    this.state.data.map(restaurant => (
                                     <div className="card">
                                         <div className="card-header row">
                                             <p className="col-sm-12 col-md-3">{ restaurant.name } </p>

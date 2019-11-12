@@ -1,38 +1,36 @@
 import React, { Component } from "react";
 import Carousel from "react-multi-carousel";
-import Card from './Card';
+//import Card from './Card';
+import CardCarousel from './CardCarousel';
 import "react-multi-carousel/lib/styles.css";
  
 export default class DishCardCarousel extends Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
     
-    //     this.state = {
-    //         loading: true,
-    //         loaded: false,
-    //         data: { current_page: 1, data: [] }
+        this.state = {
+            loading: true,
+            loaded: false,
+            data: [] 
             
-    //     }
-    // }
+        }
+    }
 
-    // componentDidMount() {
-    //     const url =
-	// 		'http://www.eatanywhere.test:8080/api/restaurants'
-	// 	fetch(url)
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			this.setState({
-    //                 loading:false,
-    //                 loaded: true,
-    //                 data: data
-    //             })
+    componentDidMount() {
+        const url =
+			'http://www.eatanywhere.test:8080/api/dishes'
+		fetch(url)
+			.then(res => res.json())
+			.then(data => {
+				this.setState({
+                    loading:false,
+                    loaded: true,
+                    data: data
+                })
                 
-	// 		})
+			})
             
-    //     }
-    
-    
-    
+        }
     
     render() {
         const responsive = {
@@ -72,11 +70,18 @@ export default class DishCardCarousel extends Component {
     dotListClass="custom-dot-list-style"
     itemClass="carousel-item-padding-100-px"
     >
-    <div><Card/></div>
-    <div><Card/></div>
-    <div><Card/></div>
-    <div><Card/></div>
-    <div><Card/></div>
+    
+                {
+                this.state.data.map(dish => (
+                <div className="cardBig">
+                    <h5>{ dish.name }</h5>
+                    <p>diets: keto</p>
+                    <a href="{ dish.restaurant_id }">restaurant link</a>
+                    <p>{ dish.description }</p>
+                    <CardCarousel/>
+                </div>
+                ))
+               }
     
     </Carousel>
 
