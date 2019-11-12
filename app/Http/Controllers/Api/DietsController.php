@@ -4,16 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Restaurant;
+use App\Diet;
 
-class RestaurantsController extends Controller
+class DietsController extends Controller
 {
-    //
     public function index()
     {
-        $restaurant=Restaurant::get();
+        $diets=Diet::get();
 
-        return $restaurant;
-        
+        return $diets;
     }
 }
