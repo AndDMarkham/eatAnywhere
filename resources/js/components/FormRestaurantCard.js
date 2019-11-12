@@ -67,7 +67,7 @@ export default class RestaurantCard extends Component {
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
+                                    <input className="form-chebhb bbbgvck-input" type="checkbox" value="" id="defaultCheck1"/>
                                     <label className="form-check-label" htmlFor="defaultCheck1">
                                         Gluten allergy
                                     </label>
