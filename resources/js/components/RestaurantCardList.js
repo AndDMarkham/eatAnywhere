@@ -9,83 +9,45 @@ export default class RestaurantCardList extends Component {
         super(props);
     
         this.state = {
-          restaurants : [
-            {
-              name: 'U Bansethu',
-              address: '123 prague 3',
-              opening: '11-24 daily',
-              url: 'https://www.ubansethu.cz/en/'
-            },
-            { 
-              name: 'BeerGeek',
-              address: '456 Prague 2',
-              opening: '16-1 daily',
-              url: 'https://beergeek.cz/en/'
-              
-            },
-          ]
+            loading: true,
+            loaded: false,
+            data: []
+            
         }
-      }
+    }
+
+    componentDidMount() {
+        const url =
+			'https://nemadywgu6.execute-api.us-west-2.amazonaws.com/prod/'
+		fetch(url)
+			.then(res => res.json())
+			.then(data => {
+				this.setState({
+                    loading:false,
+                    loaded: true,
+                    data: data
+                })
+                
+			})
+            
+        }
     
-//       /**
-//    * Handle input changes in the AddItem component.
-//    * @param event
-//    */
-//   handleInputChange = event => {
-//     const target = event.target;
-//     const value = target.value;
-//     const name = target.name;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   /**
-//    * Add an item to state.
-//    * @param event
-//    */
-//   addItem = event => {
-//     event.preventDefault();
-//     const {name, address, opening, url} = this.state;
-//     const itemsInState = this.state.items;
-//     const itemsArrayLength = itemsInState.length;
-//     const id = itemsArrayLength ? (itemsInState[itemsArrayLength - 1].id + 1) : 1;
-//     this.setState({
-//       items: [
-//         ...itemsInState,
-//         Object.assign({}, {
-//           id,
-//           name,
-//           address,
-//           opening,
-//           url
-//         })
-//       ],
-//       name: "",
-//       address: "",
-//       opening: "",
-//       url: ""
-      
-//     })
-//   };
-
       
     render() {
+        
+        
         return (
-
-            
         
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                             {
-                                    this.state.restaurants.map(restaurant => (
+                                    this.state.data.map(restaurant => (
                                     <div className="card">
                                         <div className="card-header row">
                                             <p className="col-sm-12 col-md-3">{ restaurant.name } </p>
                                             <p className="col-sm-12 col-md-3">{ restaurant.address } </p>
-                                            <p className="col-sm-12 col-md-3">{ restaurant.opening } </p>
-                                            <a href="{ restaurant.url } " target="_blank">{ restaurant.url } </a>
+                                            <a className="col-sm-12 col-md-3" href="{ restaurant.url } " target="_blank">{ restaurant.url } </a>
                                         </div>
                                         <div className="card-body">Check the dishes we have!
                                             <DishCardCarousel/>
@@ -116,3 +78,21 @@ export default class RestaurantCardList extends Component {
         );
     }
 }
+
+
+//   restaurants : [
+        //     {
+        //       name: 'U Bansethu',
+        //       address: '123 prague 3',
+        //       opening: '11-24 daily',
+        //       url: 'https://www.ubansethu.cz/en/'
+        //     },
+        //     { 
+        //       name: 'BeerGeek',
+        //       address: '456 Prague 2',
+        //       opening: '16-1 daily',
+        //       url: 'https://beergeek.cz/en/'
+              
+        //     },
+        //   ]
+        // }
