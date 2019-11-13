@@ -5,8 +5,12 @@ import "react-multi-carousel/lib/styles.css";
  
 export default class DietCardCarousel extends Component {
     
-    
     render() {
+    const dish = {name: 'wings',
+                 description: 'chicken',
+                 restaurant_id: 1}
+    
+
         const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -44,10 +48,12 @@ export default class DietCardCarousel extends Component {
     dotListClass="custom-dot-list-style"
     itemClass="carousel-item-padding-100-px "
     >
-    <div><Card/></div>
-    <div><Card/></div>
-    <div><Card/></div>
-    <div><Card/></div>
+    <div>
+        <Card
+    
+        dish={dish}
+        />
+        </div>
     
     
     

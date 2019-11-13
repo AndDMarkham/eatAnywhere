@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import DishCardCarousel from './DishCardCarousel';
-//import RestaurantCard from './RestaurantCard';
-import FormRestaurantCard from './FormRestaurantCard';
+//import FormRestaurantCard from './FormRestaurantCard';
 
 
 export default class RestaurantCardList extends Component {
@@ -10,9 +9,27 @@ export default class RestaurantCardList extends Component {
     
         this.state = {
             loading: true,
-            loaded: false,
-            data: [] 
-            
+            restaurants: [
+                {
+                    name: '',
+                    address: '',
+                    website_url: '',
+                    id: 0,
+                    dishes: [
+                        {
+                            name: '',
+                            diets_id: 0,
+                            reviews: [
+                                {
+                                    img_url: '',
+                                    rating: 0,
+                                    text: ''
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     }
 
@@ -21,11 +38,11 @@ export default class RestaurantCardList extends Component {
 			'http://www.eatanywhere.test:8080/api/restaurants'
 		fetch(url)
 			.then(res => res.json())
-			.then(data => {
+			.then(restaurants => {
 				this.setState({
                     loading:false,
-                    loaded: true,
-                    data: data
+                    restaurants: restaurants
+                    
                 })
                 
 			})
@@ -42,15 +59,18 @@ export default class RestaurantCardList extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-12">
                             {
-                                    this.state.data.map(restaurant => (
-                                    <div className="card">
+                                    this.state.restaurants.map((restaurant, key) => (
+                                    <div className="card" key={key}>
                                         <div className="card-header row">
                                             <p className="col-sm-12 col-md-3">{ restaurant.name } </p>
                                             <p className="col-sm-12 col-md-3">{ restaurant.address } </p>
-                                            <a className="col-sm-12 col-md-3" href="{ restaurant.url } " target="_blank">{ restaurant.website_url } </a>
+                                            <a className="col-sm-12 col-md-3" href={restaurant.website_url} target="_blank">Go to restaurant website </a>
                                         </div>
                                         <div className="card-body">Check the dishes we have!
-                                            <DishCardCarousel/>
+                                            <DishCardCarousel
+                                            // id={restaurant[0]}
+                                            // dishes={dishes}
+                                            />
                                         </div>
                                     </div>
 
@@ -63,14 +83,14 @@ export default class RestaurantCardList extends Component {
                 <div className="row justify-content-center">
                 Not found what you were looking for? Maybe it's time to upload the delicious dish and the restaurant where you ate it here.
                     </div>
-                <FormRestaurantCard 
+                {/* <FormRestaurantCard 
                     // name={name}
                     // address={address}
                     // opening={opening}
                     // url={url}
                     // onChange={this.handleInputChange}
                     // onSubmit={this.addItem}
-                />
+                /> */}
             </div>
                     
                 

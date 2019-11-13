@@ -26,3 +26,6 @@ Route::get('/dishes', 'Api\DishesController@index');
 
 //Restaurants:
 Route::get('/restaurants', 'Api\RestaurantsController@index');
+
+
+Route::get('/reviews', 'Api\ReviewsController@reviews');

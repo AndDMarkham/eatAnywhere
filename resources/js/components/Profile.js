@@ -25,7 +25,7 @@ export default class Profile extends Component {
                <h3>Dishes recommended for you!</h3>
                <div className="row">
                    <div className="card col-lg-12">
-                       <DietCardCarousel/>
+                       {/* <DietCardCarousel/> */}
                        
                        
                    </div>

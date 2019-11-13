@@ -12,20 +12,25 @@ export default class ReviewCard extends Component {
     
     
     render(){
+        console.log('test', this.props);
+        const {image} = this.props
+        const {rating}= this.props
+        const {text} = this.props
+        
         const ratingChanged = (newRating) => {
         console.log(newRating)
       }
         return (
            
            <div className="reviewCard card">
-               <img className="dishImg" src="./images/IMG_1589.jpg" alt=""/>
+               <img className="dishImg" src="{image}" alt=""/>
                
                <ReactStars
             count={5}
             onChange={ratingChanged}
             size={10}
             color2={'#ffd700'} />
-               <p>This meal was really awesome</p>
+               <p>{text}</p>
                 
            </div>
         )
