@@ -11,7 +11,7 @@ class RestaurantsController extends Controller
     //
     public function index()
     {
-        $restaurant=Restaurant::get();
+        $restaurant=Restaurant::limit(3)->get();
 
         return $restaurant;
         

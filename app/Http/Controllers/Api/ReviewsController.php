@@ -8,9 +8,10 @@ use App\Review;
 
 class ReviewsController extends Controller
 {
-    public function reviews() 
+    public function reviews($id) 
     {
-        $reviews = Review::limit(10)->get();
+        $dish_id = $id;
+        $reviews = Review::where('dish_id', $dish_id)->limit(5)->get();
 
         return $reviews;
     }

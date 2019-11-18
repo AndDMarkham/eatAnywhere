@@ -8,9 +8,10 @@ use App\Dish;
 
 class DishesController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $dishes=Dish::get();
+        $restaurant_id = $id;
+        $dishes=Dish::where('restaurant_id', $restaurant_id)->limit(3)->get();
 
         return $dishes;
     }

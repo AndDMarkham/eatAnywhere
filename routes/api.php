@@ -22,10 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/diets', 'Api\DietsController@index');
 
 //Dishes:
-Route::get('/dishes', 'Api\DishesController@index');
+Route::get('/dishes/{id}', 'Api\DishesController@index');
 
 //Restaurants:
 Route::get('/restaurants', 'Api\RestaurantsController@index');
 
 
-Route::get('/reviews', 'Api\ReviewsController@reviews');
+Route::get('/reviews/{id}', 'Api\ReviewsController@reviews');
