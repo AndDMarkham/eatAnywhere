@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+//PrimaryApi:
+Route::get('/restaurants', 'Api\PrimaryController@index');
+
 //Diets:
 Route::get('/diets', 'Api\DietsController@index');
 
@@ -25,7 +28,7 @@ Route::get('/diets', 'Api\DietsController@index');
 Route::get('/dishes/{id}', 'Api\DishesController@index');
 
 //Restaurants:
-Route::get('/restaurants', 'Api\RestaurantsController@index');
+// Route::get('/restaurants', 'Api\RestaurantsController@index');
 
 
 Route::get('/reviews/{id}', 'Api\ReviewsController@reviews');

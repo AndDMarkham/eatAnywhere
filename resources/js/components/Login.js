@@ -10,19 +10,19 @@ export default class LoginForm extends React.Component {
         }
     }
 
-    handleEmailChange(event) {
+    handleEmailChange = (event) => {
         this.setState({
             email: event.target.value
         });
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = (event) => {
         this.setState({
             password: event.target.value
         });
     }
 
-    handleFormSubmit(event) {
+    handleFormSubmit = (event) => {
         event.preventDefault();
 
         fetch('/api/login', {
@@ -63,7 +63,7 @@ export default class LoginForm extends React.Component {
                         /><br />
                         <input type="submit" value="Log in" />
                     </form>
-                    <a href="http://www.eatanywhere.test:8080/register">Register Here</a>
+                    <a href="">Register Here</a>
                 </div>
             </>
         )

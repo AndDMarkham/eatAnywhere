@@ -11,7 +11,7 @@ class ReviewsController extends Controller
     public function reviews($id) 
     {
         $dish_id = $id;
-        $reviews = Review::where('dish_id', $dish_id)->limit(2)->get();
+        $reviews = Review::where('dish_id', $dish_id)->limit(4)->get();
 
         return $reviews;
     }

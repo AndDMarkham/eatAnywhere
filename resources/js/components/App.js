@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import MapContainer from './MapContainer';
-import Login from './Login';
-import './index.scss';
-import Profile from './Profile';
-import RestaurantCardList from './RestaurantCardList';
+import '../../sass/index.scss';
+import Home from './Home';
+import {Router, Route, Switch, Redirect} from "react-router-dom";
+import history from "../history.js";
+import Nav from "./Nav/Nav";
 
-export default class App extends React.Component {
-    render(){
+const App = () =>  {
         return (
-           <div className="row">
-                {/* <div className="login">
-                    <Login/>
-                </div> */}
-                <div className="profile col-sm-12 col-md-4">
-                    <Profile />
-                </div>
-                
-                <div className="rightSide col-sm-12 col-md-8">
-                    {/* <MapContainer/> */}
-                    <RestaurantCardList/>
-                </div>
-            </div>
+           <>
+               <Router history={history}>
+                    <div>
+                        <Nav/>
+                        <div> 
+                            <Switch>
+                                    <Route path = '/home' component={Home} />
+                                    {/* <Route path = '/restaurants' component={RestaurantCard} /> */}
+                            </Switch>
+                        </div>
+                    </div>
+                </Router>
+            </>
         )
-    }
 }
 
-ReactDOM.render(<App/>, document.getElementById('react-app'));
+export default App;
+
+ReactDOM.render(<App/>, document.getElementById('app'));
+
+
+
+{/* <div className="login">
+        <Login/> 
+    </div> */}
